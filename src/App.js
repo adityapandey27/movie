@@ -1,9 +1,32 @@
 import './App.css';
-
+import Banner from './Components/Banner';
+import Movies from './Components/Movies';
+import Navbar from './Components/Navbar';
+import Pagination from './Components/Pagination';
+import {BrowserRouter,Routes,Route} from "react-router-dom";
+import Favourites from './Components/Favourites';
 function App() {
   return (
-    <div className="App">
-    </div>
+    <BrowserRouter>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={
+        <>
+        <Banner/>
+        <Movies/>
+        <Pagination/>
+        </>
+        }></Route>
+        
+        <Route path="/favourites"
+         element={<Favourites/>}>
+        </Route>
+      </Routes>
+      {/* navbar */}
+      {/* banner */}
+      {/* movies */}
+      {/* pagination */}
+    </BrowserRouter>
   );
 }
 
