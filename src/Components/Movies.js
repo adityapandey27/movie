@@ -1,12 +1,22 @@
-import React, { useEffect } from 'react'
+
 import Image from "../banner1.jpg";
 // axios will make the request to server on our behalf
 import axios from "axios";
 import {Oval} from "react-loader-spinner";
-import { useState } from 'react';
+import { useEffect,useState } from "react";
 
 function Movies() {
     const [movies,setMovies]=useState([]);
+    const[page,setPage]=useState(1);
+  function goAHead(){
+    setPage(page+1);
+  }
+  function goBack(){
+    if(page>1)
+    {
+    setPage(page-1);
+    }
+  }
    
     useEffect(function (){
         
@@ -40,7 +50,7 @@ function Movies() {
 
                 {
                     movies.map((movie)=>(
-                        <div className={`bg-[url(${Image})]
+                        <div className={`bg-[url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})]
                         md:h-[30vh]  md:w-[200px] bg-center bg-cover
                         h-[25vh] w-[150px]
                          rounded-xl flex items-end m-4
